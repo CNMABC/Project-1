@@ -12,6 +12,20 @@ body {
   padding-top: 10px;
 }
 
+
+.start {
+  text-align: center;
+  font-size: 40px;
+  font-family:'Amatic SC', cursive;
+}
+
+.start-and-score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Grid */
 * {
   box-sizing: border-box;
