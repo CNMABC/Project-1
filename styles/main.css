@@ -64,15 +64,15 @@ body {
   cursor: pointer;
 }
 
-.grid div.giants {
-  background-image: url('https://media.giphy.com/media/S5WCI4GtTTq5v8aV7d/giphy.gif');
+.grid div.giant {
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cd7ede72-452c-44a0-b84d-e8478fd7db43/d28t0cy-3cd3d013-cb88-49ea-be5b-0585ddb21b2d.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NkN2VkZTcyLTQ1MmMtNDRhMC1iODRkLWU4NDc4ZmQ3ZGI0M1wvZDI4dDBjeS0zY2QzZDAxMy1jYjg4LTQ5ZWEtYmU1Yi0wNTg1ZGRiMjFiMmQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5MYBoC1nqJ9D7UOBpvr0auuscCq6HGK-0wehyLytU2w');
   background-repeat: no-repeat;
   background-size: contain;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 .grid div.oil {
-  background-image: url('https://monophy.com/media/AUBkmecnhIHi16giZy/monophy.gif');
+  background-image: url('https://media3.giphy.com/media/AUBkmecnhIHi16giZy/200.gif?cid=95b27944ba1f195b03e3b550c2e1232c53ca2c732b310204&rid=200.gif&ct=g');
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;

@@ -18,12 +18,14 @@ function init() {
   const gretaClass = 'greta'
   console.log(gretaClass)
 
-  const startingGiantPosition = [24] 
-  console.log(startingGiantPosition)
-  let currentGiantPosition = 0 
-  console.log(currentGiantPosition)
-  const giantsClass = 'giants'
-  console.log(giantsClass)
+  const numberOfGiants = 25
+  // console.log('numberOfGiants--->',numberOfGiants)
+  const startingGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48] 
+  // console.log(startingGiantPosition)
+  let currentGiantPosition = [12,13,14,15,16,17,22,23,24,25,26,27,32,33,34,35,36,37,42,43,44,45,46,47] 
+  // console.log(currentGiantPosition)
+  const giantsClass = 'giant'
+  // console.log(giantsClass)
 
   const startingTreePosition = 84 
   console.log(startingTreePosition)
@@ -32,7 +34,7 @@ function init() {
   const treesClass = 'trees'
   console.log(treesClass)
 
-  const startingOilPosition = 44 
+  const startingOilPosition = 55 
   console.log(startingOilPosition)
   let currentOilPosition = 0 
   console.log(currentOilPosition)
@@ -76,9 +78,9 @@ console.log('gretaTimer',gretaTimer)
       cells.push(cell)
     }
     addGreta(startingGretaPosition)
-    // addGiants(startingGiantPosition)
     addTrees(startingTreePosition)
     addOil(startingOilPosition)
+    addGiants(startingGiantPosition)
   }
   
   createGrid(startingGretaPosition,)
@@ -87,15 +89,19 @@ console.log('gretaTimer',gretaTimer)
   function addGreta(position){
     cells[position].classList.add(gretaClass)
   }
-  function addGiants(position){
-    cells[position].classList.add(giantsClass)
-  }
+
   function addTrees(position){
     cells[position].classList.add(treesClass)
   }
   function addOil(position){
     cells[position].classList.add(oilClass)
   } 
+
+  function addGiants(positions) {
+    positions.forEach(position => {
+      cells[position].classList.add('giant')
+    })
+  }
 
 }
 
