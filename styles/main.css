@@ -13,7 +13,7 @@ body {
 }
 
 
-.start {
+#start {
   text-align: center;
   font-size: 40px;
   font-family:'Amatic SC', cursive;
@@ -46,10 +46,8 @@ body {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 900px;
-  width: 900px;
-  color: aliceblue;
-  border: black;
+  height: 730px;
+  width: 730px;
 }
 
 .grid div {
@@ -60,7 +58,7 @@ body {
 }
 
 .grid div.greta {
-  background-image: url('/styles/assets/greta\ 1.png');
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPPXu65dcmjpNHg6f-tgIna4ezK7goVj5OBQ&usqp=CAU');
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
@@ -74,17 +72,18 @@ body {
 }
 
 .grid div.oil {
-  background-image: url('https://www.pngitem.com/pimgs/m/84-842540_water-drop-clipart-oil-icon-black-free-transparent.png');
+  background-image: url('https://monophy.com/media/AUBkmecnhIHi16giZy/monophy.gif');
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
 }
 
 .grid div.trees {
-  background-image: url('https://gph.is/g/ZWr3R6L');
+  background-image: url('https://media.giphy.com/media/QaN5BogCfpp6hQ4GA9/giphy.gif');
   /* https://gph.is/g/4z9bv7w */
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  max-width: 100%; 
 }
 
