@@ -1,0 +1,76 @@
+body {
+  /* background-image:url("https://theaoi.com/wp-content/uploads/2020/02/Greta-and-the-Giants-3_.jpg"); */
+  height: 100;
+  margin: 0;
+}
+
+.heading-writing {
+  font-family:'Amatic SC', cursive;
+  font-size: 20px;
+  text-align: center;
+  color:black;
+  padding-top: 10px;
+}
+
+/* Grid */
+* {
+  box-sizing: border-box;
+}
+
+
+.grid-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 900px;
+  width: 900px;
+  color: aliceblue;
+  border: black;
+}
+
+.grid div {
+  border: 1px solid lightgrey;
+  flex-grow: 1;
+  height: 10%;
+  width: 10%;
+}
+
+.grid div.greta {
+  background-image: url('/styles/assets/greta\ 1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.grid div.giants {
+  background-image: url('https://media.giphy.com/media/S5WCI4GtTTq5v8aV7d/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.grid div.oil {
+  background-image: url('https://www.pngitem.com/pimgs/m/84-842540_water-drop-clipart-oil-icon-black-free-transparent.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.grid div.trees {
+  background-image: url('https://gph.is/g/ZWr3R6L');
+  /* https://gph.is/g/4z9bv7w */
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
