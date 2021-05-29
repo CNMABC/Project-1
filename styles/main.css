@@ -1,7 +1,5 @@
 body {
-  /* background-image:url("https://theaoi.com/wp-content/uploads/2020/02/Greta-and-the-Giants-3_.jpg"); */
-  height: 100;
-  margin: 0;
+  font-family:'Amatic SC', cursive;
 }
 
 .heading-writing {
@@ -13,18 +11,11 @@ body {
 }
 
 
-#start {
-  text-align: center;
-  font-size: 40px;
-  font-family:'Amatic SC', cursive;
-}
-
-.start-and-score {
+.start-score-and-lives {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
+
 
 /* Grid */
 * {
