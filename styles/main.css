@@ -1,19 +1,33 @@
 body {
   font-family:'Amatic SC', cursive;
+  background-image: url('https://theaoi.com/wp-content/uploads/2020/02/Greta-and-the-Giants-3_.jpg');
+  background-size: cover; 
 }
 
 .heading-writing {
   font-family:'Amatic SC', cursive;
-  font-size: 20px;
+  font-size: 35px;
   text-align: center;
-  color:black;
+  color:white;
   padding-top: 10px;
+  text-shadow: 2px 2px #011802;
+  letter-spacing: 3px;
+}
+h1 {
+  font-family: 200;
 }
 
+h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 17px;
+}
 
-.start-score-and-lives {
+.start-and-score {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
 }
 
 
@@ -32,17 +46,17 @@ body {
 
 .grid {
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
   display: flex;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 730px;
-  width: 730px;
+  height: 600px;
+  width: 600px;
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
