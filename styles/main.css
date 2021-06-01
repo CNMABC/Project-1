@@ -72,9 +72,13 @@ body {
 .grid div.trees {
   background-image: url('https://media.giphy.com/media/QaN5BogCfpp6hQ4GA9/giphy.gif');
   /* https://gph.is/g/4z9bv7w */
+  /* /https://cbswire.dk/wp-content/uploads/2019/12/sustainability.gif */
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
   max-width: 100%; 
 }
+
+/* Graphics storage for background etc. 
+https://cbswire.dk/wp-content/uploads/2019/12/sustainability.gif */
 

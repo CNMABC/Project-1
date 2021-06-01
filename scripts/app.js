@@ -1,77 +1,46 @@
 function init() {
   console.log('js up and running')
-  
   const grid = document.querySelector('.grid')
-  //console.log('grid', grid)
-  
   const width = 10
-  //console.log('width',width)
   const cellCount = width * width
-  //console.log('cellcount',cellCount)
   const cells = [] // empty array - so you can keep track of them as can't select from html - need to store them
 
 // ! ----Characters in the game -----------------------------------------
   const startingGretaPosition = 94 
-  //console.log(startingGretaPosition)
   let currentGretaPosition = 94 
-  console.log(currentGretaPosition)
   const gretaClass = 'greta'
-  //console.log(gretaClass)
 
-  const numberOfGiants = 25
-  // console.log('numberOfGiants--->',numberOfGiants)
-  const startingGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48] 
-  // console.log(startingGiantPosition)
-  let currentGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,487] 
-  // console.log(currentGiantPosition)
-  const giantsClass = 'giant'
-  // console.log(giantsClass)
+
+  const startingGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38] 
+  let currentGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,] 
+  const giantClass = 'giant'
 
   const startingTreePosition = 84 
-  //console.log(startingTreePosition)
   let currentTreePosition = 84  
-  //console.log(currentTreePosition)
   const treesClass = 'trees'
-  //console.log(treesClass)
 
   const startingOilPosition = 55 
-  // console.log(startingOilPosition)
   let currentOilPosition = 55 
-  //console.log(currentOilPosition)
   const oilClass = 'oil'
-  //console.log(oilClass)
-  // ! Creating multiple giants --------
-  
+
 
   // !updating sessions
-  const startButton = document.querySelector('#start-button') // get the start button
-  //console.log(startButton)
-  const scoreDisplay = document.querySelector('#score-display') // get the score span
-  //console.log(scoreDisplay)
-  const livesDisplay = document.querySelector('#lives-display') // get the lives span
-  //console.log(livesDisplay)
+  const startButton = document.querySelector('#start-button')
+  const scoreDisplay = document.querySelector('#score-display')
+  const livesDisplay = document.querySelector('#lives-display') 
 
 // ! Timers ----------------------------
-  let gretaTimer // variable to store the timer id
-  //console.log('gretaTimer',gretaTimer)
-  let giantsTimer // variable to store the timer id
-  //console.log('giantsTimer',giantsTimer)
   let treesTimer
-  //console.log('treesTimer',treesTimer)
   let oilTimer
-  //console.log('oil-timer-->',oilTimer)
-
-  let livesRemaining = 10  // start lives at 3
-  //console.log(livesRemaining)
-  let score = 0  // start score at 0
-  //console.log(score)
+  let livesRemaining = 10  
+  let score = 0 
+  let moveRight = true
 
   //! Make the grid ---------------------
   function createGrid(startingGretaPosition) {
     for (let i = 0; i < cellCount; i++) { // keep going as long as i is less than the cell count
       
       const cell = document.createElement('div')// created a div - similar to query selector 
-      //console.log(cell)
       cell.innerText = i
       grid.appendChild(cell)// passed in cell element newly created - all divs are now children
       cells.push(cell)
@@ -83,17 +52,16 @@ function init() {
   }
   
   
-  
 //! Add characters to the page -------------
   function addGreta(position){
-    cells[position].classList.add(gretaClass)
+    cells[position].classList.add('greta')
   }
 
   function addTrees(position){
-    cells[position].classList.add(treesClass)
+    cells[position].classList.add('tress')
   }
   function addOil(position){
-    cells[position].classList.add(oilClass)
+    cells[position].classList.add('oil')
   } 
 
   function addGiants(positions) {
@@ -103,23 +71,22 @@ function init() {
   }
 //! Remove characters from the page ---------
 
-function removeGreta(position) {
-  cells[position].classList.remove(gretaClass)
+  function removeGreta(position) {
+  cells[position].classList.remove('greta')
 }
 
-function removeTrees(position){
-    cells[position].classList.remove(treesClass)
+  function removeTrees(position){
+    cells[position].classList.remove('trees')
   }
 
   function removeOil(position){
-    cells[position].classList.remove(oilClass)
+    cells[position].classList.remove('oil')
   } 
 
-  function removeGiants(positions) {// this would remove all giants so this needs changing 
-    positions.forEach(position => {
-      cells[position].classList.remove('giant')
-    })
+  function removeGiants(position) {// this would remove all giants so this needs changing 
+    cells[position].classList.remove('giant')
   }
+
 
 // ! Get greta to move left & right with arrows
   function moveGreta(event) {
@@ -139,13 +106,60 @@ function removeTrees(position){
     addGreta(currentGretaPosition)
   }
 
-
-
-
-
-  document.addEventListener('keyup', moveGreta)
+  document.addEventListener('keyup', moveGreta)  
   createGrid(startingGretaPosition)
+  
+//! Get Giants to move 
+  function startGame() {
+    addGiants(startingGiantPosition)
+    console.log(startGame)
 }
 
+  // function moveGiants() {
+  //   removeGiants(currentGiantPosition)
+  //   const giantNewPosition = currentGiantPosition.map(giantItem => {
+  //     const right = currentGiantPosition++
+  //     return right
+  //     if (currentGiantPositions = currentGiantPositions.map(position => position++)){
+  //     console.log('changes')
+  //     } else if (leftBorder ) { 
+  //       const left = currentGiantPosition--
+  //       return left 
+  //   }
+  //   })
+// }
+//     
+
+
+//       for (let i = 0; i < currentGiantPosition.length; i ++) {
+//         const giantRight = currentGiantPosition[i] ++ 
+//       }
+//       for (let i = 0; i < currentGiantPosition.length; i ++) {
+//       const giantLeft = currentGiantPosition[i] -- 
+//       }
+//       if (currentGiantPositions = currentGiantPositions.map(position => position++){}
+
+//     })
+// }
+
+
+
+  // 2. redefine their positions 
+  // this is redefining the currentGiantPositions array to be equal to the result of the map
+  // the map is looping through the current positions, increasing each index by one
+  // and returning a new array of indexes. ++ to move right -- to move left
+  // you'll need to also keep track of their direction (in a variable starting as 'right')
+  // add an if statement that checks the direction and redefines the indexes based on that
+  // currentGiantPositions = currentGiantPositions.map(position => position++)
+  // log currentGiantPositions here and see how its changing
+  // 3. add them back at their new positions, passing in currentGiantPositions
+// }
+// // 4. call the moveGiants function on an interval so it happens every 1 second or whatever
+
+removeGiants(currentGiantPosition)
+setInterval(moveGiants, 3000)
+
+
+}
 
 window.addEventListener('DOMContentLoaded', init)
