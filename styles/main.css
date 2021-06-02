@@ -51,8 +51,11 @@ h2 {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 600px;
-  width: 600px;
+  height: 620px;
+  width: 620px;
+  background: aliceblue;
+  opacity: 0.8;
+
 }
 
 .grid div {
@@ -84,7 +87,8 @@ h2 {
 }
 
 .grid div.trees {
-  background-image: url('https://media.giphy.com/media/QaN5BogCfpp6hQ4GA9/giphy.gif');
+  /* background-image: url('https://cbswire.dk/wp-content/uploads/2019/12/sustainability.gif') */
+  background-image: url('https://media.giphy.com/media/QaN5BogCfpp6hQ4GA9/giphy.gif'); */
   /* https://gph.is/g/4z9bv7w */
   /* /https://cbswire.dk/wp-content/uploads/2019/12/sustainability.gif */
   background-repeat: no-repeat;

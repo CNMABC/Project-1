@@ -171,21 +171,50 @@ function init() {
   }
   // ? to get the laser working
   // variable for laserPosition, this should start equal to greta position so its always where she is on the page
-  // function to add the laser
-  // function to remove the laser
-  // function to move the laser
-  // inside the move laser function add an interval
-  // inside the interval you want to remove the laser
-  // then redefine the position of the laser, minusing width each time so it moves up
-  // add the laser back at the new position
+  // function to add the laser - DONE
+  // function to remove the laser - DONE
+  // function to move the laser - DONE
+  // inside the move laser function add an interval - DONE
+  // inside the interval you want to remove the laser - DONE
+
+  // then redefine the position of the laser - minusing width each time so it moves up - 
+  //add the laser back at the new position - DONE
   // invoke this function on whatever key you want, add a key event listener and that should call the moveLaser function
   // add in a condition to stop the timer if the laser goes off the top of the grid, think about the condition you can use from the cat game to check this
   // next add a check inside moveLaser to check if there has been a collision, does the div with the class of laser also have a class of giant?
   // if there is a collision, remove that index from the currentGiantPosition array so the giant is dead and wont come back
   // the last step above can be broken down further so just take it step by step
-  // for the giants you will also want a check at some point to stop them going off the bottom of the grid, similar logic to checking if they are on the edge
+  
+  
+  // for the giants you will also want a check at some point to stop them going off the bottom of the grid, similar logic to checking if they are on the edge - DONE 
   
 
   startButton.addEventListener('click', startGame)
 }
 window.addEventListener('DOMContentLoaded', init)
+
+
+
+function moveGreta(event) {
+  console.log('current location of greta',currentGretaPosition)
+  const key = event.keyCode
+  if (key === 32){
+    event.preventDefault()
+    console.log('key is being pressed-->')// change to function moving the laser - invoke function here 
+  }
+  removeGreta(currentGretaPosition)
+
+  if (key === 39 && currentGretaPosition % width !== width - 1) {// if the key is equal to 39 (right arrow)
+    console.log('RIGHT')// if right increases by one 
+    currentGretaPosition++// move the position of the cat to be one more than it currently is 
+  } else if (key === 37 && currentGretaPosition % width !== 0) { // making sure this is responding to left - checking ig current position of cat is equal to 9  
+    console.log('LEFT')
+    currentGretaPosition--
+  } else {
+    console.log('INVALID KEY')
+  }
+  addGreta(currentGretaPosition)
+}
+
+document.addEventListener('keyup', moveGreta)  
+createGrid(startingGretaPosition)

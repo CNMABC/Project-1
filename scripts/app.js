@@ -16,7 +16,7 @@ function init() {
   let giantTimer // variable to keep track of the timer id for the giants, can use this to clear the interval when its game over
   
   const startingTreePosition = currentGretaPosition
-  const currentTreePosition = currentGretaPosition
+  let currentTreePosition = currentGretaPosition
   console.log('current tree position',currentTreePosition)
   console.log('starting tree position',startingTreePosition)
   const treeClass = 'trees'
@@ -165,7 +165,7 @@ function init() {
     console.log('current location of tree ---->',startingTreePosition)
     treesTimer = setInterval(() => {
       removeTrees(currentGretaPosition)
-      const newTreePosition = currentGretaPosition- width
+      const newTreePosition = currentGretaPosition - width
       console.log('the trees are here',currentTreePosition)
       addTree(currentGretaPosition)
     }, 6000)
@@ -182,42 +182,6 @@ function init() {
 
 
 
-// // function oilDrop ()
-//   oilTimer = setInterval(() => {
-
-// }, 1500)
-// when the start button is clicked (event listener)get oil image to do this function 
-// from startingOilPosition randomly release images to drop down 
-// check if gone off grid - clear the interval 
-
-
-
-
-
-
-
-
-// when the start button is clicked start this function 
-// when this function is called every 5 seconds I want it to randomly drop bullets across the page 
-// from that location every 5 seconds randomly drop bullets down
-// make bullets go in a straight line 
-
-
-
-
-
-
-// if alien shot remove alien from that location 
-
-// Greta 
-// shoot from above her current location in a straight line with space bar
-// re-start game everytime greta dies 
-// after 3 lives dead start from the beginning   
-
-
-// Score 
-// Everytime an alien dies +10 
-// everytime Greta gets hit lose a life 
 
 //?-----------------------------------------------
 
