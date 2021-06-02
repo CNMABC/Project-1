@@ -16,7 +16,7 @@ function init() {
   let giantTimer // variable to keep track of the timer id for the giants, can use this to clear the interval when its game over
   
   const startingTreePosition = currentGretaPosition
-  let currentTreePosition = currentGretaPosition
+  let currentTreePosition
   console.log('current tree position',currentTreePosition)
   console.log('starting tree position',startingTreePosition)
   const treeClass = 'trees'
@@ -47,8 +47,7 @@ function init() {
     }
     addGreta(startingGretaPosition)// leave this here 
     addGiants(startingGiantPosition)
-    addTree(startingTreePosition)// remove this as need to invoke them being added when game starts 
-    // addOil(startingOilPosition)
+  
     
   }
   
@@ -97,7 +96,7 @@ function init() {
     const key = event.keyCode
     if (key === 32){
       event.preventDefault()
-      console.log('key is being pressed-->',moveTree)// change to function moving the laser - invoke function here 
+      moveTree() // change to function moving the laser - invoke function here 
     }
     removeGreta(currentGretaPosition)
 
@@ -153,6 +152,7 @@ function init() {
     }, 1500)
   }
 // ------------------- coding area -------------------
+//! Lasers shooting
 // function addTree(position){
 //   cells[position].classList.add('trees')
 // }
@@ -163,19 +163,28 @@ function init() {
 
   function moveTree() {
     console.log('current location of tree ---->',startingTreePosition)
+    currentTreePosition = currentGretaPosition - width
+    addTree(currentTreePosition)
     treesTimer = setInterval(() => {
-      removeTrees(currentGretaPosition)
-      const newTreePosition = currentGretaPosition - width
-      console.log('the trees are here',currentTreePosition)
-      addTree(currentGretaPosition)
-    }, 6000)
-    
+      if (currentTreePosition - width < 0) {
+        removeTrees(currentTreePosition)
+        return clearInterval(treesTimer)// when we want to stop executing
+      }
+      removeTrees(currentTreePosition)
+      currentTreePosition -= width // find the new div
+      addTree(currentTreePosition)// add the tree again
+    }, 800)
+  
+  // check if tree has hit a giant if it has - 
+  //console.log (inside the if block) a collison and start thinking about other things to do in that situation (if statement - code just written bwill become else if of that statement)
+  //stoppping timer
+  //removing tree
+  // removing giant class and remove it from the array 
   }
-
 
   console.log('a tree is being added', addTree)
   console.log('a tree is being removed',removeTrees)
-  moveTree()
+
 
 
 
