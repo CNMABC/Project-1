@@ -9,9 +9,7 @@ body {
   font-size: 35px;
   text-align: center;
   color:white;
-  padding-top: 10px;
-  text-shadow: 2px 2px #011802;
-  letter-spacing: 3px;
+  
 }
 h1 {
   font-family: 200;
@@ -20,14 +18,23 @@ h1 {
 h2 {
   font-family: 'Quicksand', sans-serif;
   font-size: 17px;
+  text-shadow: 2px 2px #011802;
+  letter-spacing: 3px;
 }
 
 .start-and-score {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   font-family: 'Quicksand', sans-serif;
   font-size: 15px;
+  border-radius: 25px;
+  background: rgb(147, 28, 158);
+  margin: 0 400px; 
+  padding: 10px;
+  color: black;
+  letter-spacing: 3px;
+  opacity: 0.65;
 }
 
 
@@ -55,6 +62,7 @@ h2 {
   width: 620px;
   background: aliceblue;
   opacity: 0.8;
+  border-radius: 25px;
 
 }
 

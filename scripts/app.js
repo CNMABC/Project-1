@@ -1,5 +1,4 @@
 function init() {
-  console.log('js up and running')
   const grid = document.querySelector('.grid')
   const width = 10
   const cellCount = width * width
@@ -20,22 +19,22 @@ function init() {
   console.log('current tree position',currentTreePosition)
   console.log('starting tree position',startingTreePosition)
   const treeClass = 'trees'
-  const startingOilPosition = 55 
-  let currentOilPosition = 55 
+  const startingOilPosition = currentGiantPosition
+  let currentOilPosition  
   const oilClass = 'oil'
   const giantsHitEdge = [80,81,82,83,84,85,86,87,88,89]
+  const moveRight = true
 
   // !updating sessions
   const startButton = document.querySelector('#start-button')
   const scoreDisplay = document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display') 
 
-// ! Timers ----------------------------
+// ! Timers/Lives/Scores ----------------------------
   let treesTimer
   let oilTimer
-  const livesRemaining = 10  
-  const score = 0 
-  const moveRight = true
+  let lives = 3  
+  let score = 0 
 
   //! Make the grid ---------------------
   function createGrid(startingGretaPosition) {
@@ -47,10 +46,7 @@ function init() {
     }
     addGreta(startingGretaPosition)// leave this here 
     addGiants(startingGiantPosition)
-  
-    
   }
-  
   
 //! Add characters to the page -------------
   function addGreta(position){
@@ -89,7 +85,6 @@ function init() {
     })
   }
 
-
 // ! -------------------------Get greta to move left & right with arrows ------------
   function moveGreta(event) {
     console.log('current location of greta',currentGretaPosition)
@@ -100,10 +95,10 @@ function init() {
     }
     removeGreta(currentGretaPosition)
 
-    if (key === 39 && currentGretaPosition % width !== width - 1) {// if the key is equal to 39 (right arrow)
-      console.log('RIGHT')// if right increases by one 
-      currentGretaPosition++// move the position of the cat to be one more than it currently is 
-    } else if (key === 37 && currentGretaPosition % width !== 0) { // making sure this is responding to left - checking ig current position of cat is equal to 9  
+    if (key === 39 && currentGretaPosition % width !== width - 1) {
+      console.log('RIGHT')
+      currentGretaPosition++
+    } else if (key === 37 && currentGretaPosition % width !== 0) { // making sure this is responding to left - checking if current position of cat is equal to 9  
       console.log('LEFT')
       currentGretaPosition--
     } else {
@@ -117,9 +112,27 @@ function init() {
   
 //! -----------------------------------Get Giants to move ----------------------------
   function startGame() {
-  addGiants(startingGiantPosition)
-  moveGiants()
-  // call the function oilDrop to start 
+    addGiants(startingGiantPosition)
+    moveGiants()
+    oilDripping()
+  }
+
+  function restartGame (){
+    removeGiants(currentGiantPosition)
+    addGiants(startingGiantPosition)
+    removeGreta(currentGretaPosition)
+    addGreta(startingGretaPosition)
+  }
+
+  function stopGame(){
+    removeGiants()
+    removeGreta()
+    removeOil()
+    removeTrees()
+    // show a game over sign 
+    // const gameover = document.createElement("image")
+    // img.src = url 'image.png'
+    // look at sames lecture 
   }
 
   function moveGiants() {
@@ -128,10 +141,9 @@ function init() {
       const giantsOnRightEdge = currentGiantPosition.some(giant => giant % width === 9)
       const giantsOnLeftEdge = currentGiantPosition.some(giant => giant % width === 0)
       const giantsOnBottomEdge = currentGiantPosition.some(giant => giantsHitEdge.includes(giant))
-      console.log('giants have hit-->',giantsOnBottomEdge)
+      // console.log('giants have hit-->',giantsOnBottomEdge)
       if (giantsOnBottomEdge) {
-        return clearInterval(giantTimer)// don't run anything else in this function (just stop!) 
-      // return gameover 
+        return clearInterval(giantTimer)// don't run anything else in this function 
       }
       if (giantDirection === 'right') {
         if (giantsOnRightEdge) {
@@ -151,48 +163,58 @@ function init() {
       addGiants(currentGiantPosition)
     }, 1500)
   }
-// ------------------- coding area -------------------
-//! Lasers shooting
-// function addTree(position){
-//   cells[position].classList.add('trees')
-// }
-
-// function removeTrees(position){
-//   cells[position].classList.remove('trees')
-// }
-
+//! ------------------ Lasers shooting -------------------
   function moveTree() {
-    console.log('current location of tree ---->',startingTreePosition)
+    // console.log('current location of tree ---->',startingTreePosition)
     currentTreePosition = currentGretaPosition - width
     addTree(currentTreePosition)
     treesTimer = setInterval(() => {
-      if (currentTreePosition - width < 0) {
+      if (cells[currentTreePosition].classList.contains('giant')) {
+        score += 100 
+        scoreDisplay.innerText = score
+        console.log('collision')
         removeTrees(currentTreePosition)
-        return clearInterval(treesTimer)// when we want to stop executing
+        cells[currentTreePosition].classList.remove('giant')
+        currentGiantPosition = currentGiantPosition.filter(giantPosition => giantPosition !== currentTreePosition)//for some reason now multiple giants are disappearing
+        return clearInterval(treesTimer)
+      } else if (currentTreePosition - width < 0) {
+        removeTrees(currentTreePosition)
+        return clearInterval(treesTimer)
       }
       removeTrees(currentTreePosition)
       currentTreePosition -= width // find the new div
       addTree(currentTreePosition)// add the tree again
-    }, 800)
-  
-  // check if tree has hit a giant if it has - 
-  //console.log (inside the if block) a collison and start thinking about other things to do in that situation (if statement - code just written bwill become else if of that statement)
-  //stoppping timer
-  //removing tree
-  // removing giant class and remove it from the array 
+    }, 700)
   }
 
-  console.log('a tree is being added', addTree)
-  console.log('a tree is being removed',removeTrees)
+//! ------------------ Giants shooting -------------------
+
+// ---------------coding area ----------------
+// create a new function 
+  function oilDripping() {
+    console.log('oil is here',currentOilPosition)
+    currentOilPosition = Math.floor(Math.random() * squares.length - width)// need help here please - where do I include currentGiant Position, do I need to?!
+    addOil(currentOilPosition)
+    oilTimer = setInterval(() => {
+      if (cells[currentOilPosition].classList.contains('greta')) {
+        if (lives <= 1){
+          console.log('Game Over')
+          stopGame()
+        
+        } else {
+          lives -= 1
+          livesDisplay.innerText = lives
+          console.log('lost a life')
+          removeOil(currentOilPosition)
+          restartGame ()
+        }
+      }
+    }, 1000)
+  }
 
 
 
 
-
-
-
-
-//?-----------------------------------------------
 
 startButton.addEventListener('click',startGame)
 }
