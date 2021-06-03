@@ -4,7 +4,7 @@ function init() {
   const cellCount = width * width
   const cells = [] // empty array - so you can keep track of them as can't select from html - need to store them
 
-// ! ----Characters in the game -----------------------------------------
+// ! ----Characters in the game --------------
   const startingGretaPosition = 94 
   let currentGretaPosition = 94 
   const gretaClass = 'greta'
@@ -12,19 +12,14 @@ function init() {
   let currentGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,] 
   const giantClass = 'giant'
   let giantDirection = 'right' // variable to keep track of what direction the giants are travelling in, starting with right
-  let giantTimer // variable to keep track of the timer id for the giants, can use this to clear the interval when its game over
-  
-  const startingTreePosition = currentGretaPosition
-  let currentTreePosition
-  console.log('current tree position',currentTreePosition)
-  console.log('starting tree position',startingTreePosition)
-  const treeClass = 'trees'
-  const startingOilPosition = currentGiantPosition
-  let currentOilPosition  
-  const oilClass = 'oil'
   const giantsHitEdge = [80,81,82,83,84,85,86,87,88,89]
   const moveRight = true
-
+  const startingTreePosition = currentGretaPosition
+  let currentTreePosition
+  const treeClass = 'trees'
+  let currentOilPosition 
+  const oilClass = 'oil'
+  
   // !updating sessions
   const startButton = document.querySelector('#start-button')
   const scoreDisplay = document.querySelector('#score-display')
@@ -33,6 +28,7 @@ function init() {
 // ! Timers/Lives/Scores ----------------------------
   let treesTimer
   let oilTimer
+  let giantTimer // variable to keep track of the timer id for the giants, can use this to clear the interval when its game over
   let lives = 3  
   let score = 0 
 
@@ -52,24 +48,23 @@ function init() {
   function addGreta(position){
     cells[position].classList.add('greta')
   }
-
   function addTree(position){
     cells[position].classList.add('trees')
   }
   function addOil(position){
     cells[position].classList.add('oil')
   } 
-
   function addGiants(positions) {
     positions.forEach(position => {
       cells[position].classList.add('giant')
     })
   }
+
 //! Remove characters from the page ---------
 
   function removeGreta(position) {
-  cells[position].classList.remove('greta')
-}
+    cells[position].classList.remove('greta')
+  }
 
   function removeTrees(position){
     cells[position].classList.remove('trees')
@@ -85,9 +80,8 @@ function init() {
     })
   }
 
-// ! -------------------------Get greta to move left & right with arrows ------------
+// ! ---------------------  Get greta to move left & right with arrows ------------
   function moveGreta(event) {
-    console.log('current location of greta',currentGretaPosition)
     const key = event.keyCode
     if (key === 32){
       event.preventDefault()
@@ -106,11 +100,10 @@ function init() {
     }
     addGreta(currentGretaPosition)
   }
-
   document.addEventListener('keyup', moveGreta)  
   createGrid(startingGretaPosition)
   
-//! -----------------------------------Get Giants to move ----------------------------
+//! ---------------------------------  Get Giants to move  --------------------------
   function startGame() {
     addGiants(startingGiantPosition)
     moveGiants()
@@ -129,10 +122,12 @@ function init() {
     removeGreta()
     removeOil()
     removeTrees()
+    cells.forEach(cell => cell.classList.remove('tree')
     // show a game over sign 
     // const gameover = document.createElement("image")
     // img.src = url 'image.png'
     // look at sames lecture 
+    )
   }
 
   function moveGiants() {
@@ -161,7 +156,7 @@ function init() {
         }
       }
       addGiants(currentGiantPosition)
-    }, 1500)
+    }, 1000)
   }
 //! ------------------ Lasers shooting -------------------
   function moveTree() {
@@ -192,23 +187,34 @@ function init() {
 // ---------------coding area ----------------
 // create a new function 
   function oilDripping() {
-    console.log('oil is here',currentOilPosition)
-    currentOilPosition = Math.floor(Math.random() * squares.length - width)// need help here please - where do I include currentGiant Position, do I need to?!
-    addOil(currentOilPosition)
+    const randomNumber = Math.floor(Math.random() * currentGiantPosition.length)// generate a random number based on how many giants there are
+    const giantToDropOil = currentGiantPosition[randomNumber] // use the random number to find giant position at that index in the array
+    const oilStartPosition = giantToDropOil + width // set start of the oil to be 1 cell below the giant
+    currentOilPosition = oilStartPosition // make sure current position is same as start position
+    if (cells[oilStartPosition].classList.contains('giant')) { // if the cell it finds has a class of giant (which means its not on the bottom row), run the function again to find a new position
+      return oilDripping()
+    }
+    addOil(oilStartPosition) // add oil at the starting position
     oilTimer = setInterval(() => {
+      if (currentOilPosition > 99) { // if it hits the bottom stop the timer and generate more oil
+        clearInterval(oilTimer)
+        oilDripping()
+      }  
       if (cells[currentOilPosition].classList.contains('greta')) {
         if (lives <= 1){
           console.log('Game Over')
           stopGame()
-        
         } else {
           lives -= 1
           livesDisplay.innerText = lives
           console.log('lost a life')
           removeOil(currentOilPosition)
-          restartGame ()
+          restartGame()
         }
       }
+      removeOil(currentOilPosition) // remove the oil
+      currentOilPosition += width // redefine the new position
+      addOil(currentOilPosition) // add oil at the new position
     }, 1000)
   }
 
@@ -216,7 +222,8 @@ function init() {
 
 
 
-startButton.addEventListener('click',startGame)
+  startButton.addEventListener('click',startGame)
+
 }
 
 window.addEventListener('DOMContentLoaded', init)
