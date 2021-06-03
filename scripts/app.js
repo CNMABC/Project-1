@@ -115,6 +115,8 @@ function init() {
     addGiants(startingGiantPosition)
     removeGreta(currentGretaPosition)
     addGreta(startingGretaPosition)
+    clearInterval(giantTimer)
+    clearInterval(oilTimer)
   }
 
   function stopGame(){
@@ -122,6 +124,8 @@ function init() {
     removeGreta()
     removeOil()
     removeTrees()
+    clearInterval(giantTimer)
+    clearInterval(oilTimer)
     cells.forEach(cell => cell.classList.remove('tree')
     // show a game over sign 
     // const gameover = document.createElement("image")
@@ -154,9 +158,21 @@ function init() {
         } else {
           currentGiantPosition = currentGiantPosition.map(giant => giant - 1)
         }
+      } else if (cells[currentGiantPosition].classList.contains('greta')) {
+        if (lives <= 1){
+          console.log('game over')
+          stopGame()
+          return clearInterval(giantTimer)
+        } else if (lives >= 1){
+          lives -= 1
+          livesDisplay.innerText = lives
+          console.log('lost a life--->')
+          restartGame ()
+          return clearInterval(giantTimer)
+        }
       }
       addGiants(currentGiantPosition)
-    }, 1000)
+    },1000)
   }
 //! ------------------ Lasers shooting -------------------
   function moveTree() {

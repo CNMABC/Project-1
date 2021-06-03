@@ -12,31 +12,56 @@ body {
   
 }
 h1 {
-  font-family: 200;
+  margin: 20px 20px 0px 20px;
+
 }
 
 h2 {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 17px;
-  text-shadow: 2px 2px #011802;
+  text-align: center;
+  font-family:'Shadows Into Light', cursive;
+  font-size: 20px;
+  opacity: 0.85;
+  /* text-shadow: 2px 2px #011802; */
   letter-spacing: 3px;
+  background: #3C1867; 
+  border-radius: 25px;
+  color: white ;
+  width: 400px;
+  text-align: center;
+  padding: 20px;
+}
+
+.h2-writing{
+  display: flex;
+  justify-content: center;
+  opacity: 0.9;
 }
 
 .start-and-score {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 15px;
-  border-radius: 25px;
-  background: rgb(147, 28, 158);
-  margin: 0 400px; 
+  font-family: 'Shadows Into Light', cursive;;
+  font-size: 20px;
+  margin: 0 320px; 
   padding: 10px;
-  color: black;
+  color: white;
   letter-spacing: 3px;
-  opacity: 0.65;
+  
 }
 
+button {
+  padding: 0px 15px 0px 15px;
+  font-family: 'Odibee Sans', cursive;
+  background: hsl(66, 75%, 50%);
+  font-size: 20px;
+  outline: none;
+  letter-spacing: 3px;
+  border-radius: 25px;
+  border: none;
+  height: 80px;
+  width: 100px;
+}
 
 /* Grid */
 * {
@@ -45,7 +70,7 @@ h2 {
 
 
 .grid-wrapper {
-  height: 100vh;
+  height: 83vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,11 +83,13 @@ h2 {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 620px;
-  width: 620px;
+  height: 640px;
+  width: 640px;
   background: aliceblue;
   opacity: 0.8;
   border-radius: 25px;
+  color: none;
+  
 }
 
 .grid div {
@@ -106,4 +133,3 @@ h2 {
 
 /* Graphics storage for background etc. 
 https://cbswire.dk/wp-content/uploads/2019/12/sustainability.gif */
-
