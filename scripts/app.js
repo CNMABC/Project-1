@@ -8,8 +8,8 @@ function init() {
   const startingGretaPosition = 94 
   let currentGretaPosition = 94 
   const gretaClass = 'greta'
-  const startingGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38] 
-  let currentGiantPosition = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,] 
+  const startingGiantPosition = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,31,32,33,34,35,36,37,38,39] 
+  let currentGiantPosition = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,31,32,33,34,35,36,37,38,39] 
   const giantClass = 'giant'
   let giantDirection = 'right' // variable to keep track of what direction the giants are travelling in, starting with right
   const giantsHitEdge = [80,81,82,83,84,85,86,87,88,89]
@@ -18,6 +18,7 @@ function init() {
   let currentTreePosition
   const treeClass = 'trees'
   const oilClass = 'oil'
+  // let updatedGiantPosition = []
   
   // !updating sessions
   const startButton = document.querySelector('#start-button')
@@ -119,9 +120,11 @@ function init() {
     addGreta(startingGretaPosition)
     clearInterval(giantTimer)
     clearInterval(oilTimer)
+    startGame()
   }
 
   function stopGame(){
+    console.log('stop the game')
     removeGiants()
     removeGreta()
     removeOil()
@@ -145,6 +148,8 @@ function init() {
       // console.log('giants have hit-->',giantsOnBottomEdge)
       if (giantsOnBottomEdge) {
         restartGame()
+        lives -= 1
+        livesDisplay.innerText = lives
         return 
       }
       if (giantDirection === 'right') {
@@ -185,12 +190,13 @@ function init() {
     addTree(currentTreePosition)
     treesTimer = setInterval(() => {
       if (cells[currentTreePosition].classList.contains('giant')) {
+        removeTrees(currentTreePosition)
         score += 100 
         scoreDisplay.innerText = score
         console.log('collision')
-        removeTrees(currentTreePosition)
         cells[currentTreePosition].classList.remove('giant')
         currentGiantPosition = currentGiantPosition.filter(giantPosition => giantPosition !== currentTreePosition)//for some reason now multiple giants are disappearing
+        
         return clearInterval(treesTimer)
       } else if (currentTreePosition - width < 0) {
         removeTrees(currentTreePosition)
@@ -234,17 +240,12 @@ function init() {
           livesDisplay.innerText = lives
           console.log('lost a life')
           removeOil(currentOilPosition)
+          removeTrees(currentTreePosition)
           restartGame()
         }
-      
-    }
-       // add oil at the new position
+      }
     }, 1000)
   }
-
-
-
-
 
   startButton.addEventListener('click',startGame)
 

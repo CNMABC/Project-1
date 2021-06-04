@@ -29,6 +29,8 @@ h2 {
   width: 400px;
   text-align: center;
   padding: 20px;
+  border: 20px;
+
 }
 
 .h2-writing{
@@ -38,8 +40,8 @@ h2 {
   opacity: 0.9;
 }
 
-h2-writing:hover {
-  
+.h2-writing:hover {
+  background-image: url('https://media.giphy.com/media/yK06FVPSl88B0rdGSl/giphy.gif');
 }
 
 .start-and-score {
@@ -48,10 +50,12 @@ h2-writing:hover {
   justify-content: space-between;
   font-family: 'Shadows Into Light', cursive;;
   font-size: 20px;
-  margin: 0 320px; 
-  padding: 10px;
-  color: white;
+  margin: 0 190px; 
+  padding: 0 20px;
+  color: rgb(57, 17, 110);
   letter-spacing: 3px;
+  background: aliceblue;
+  border-radius: 40px;
   
 }
 
@@ -72,6 +76,12 @@ button {
 button:hover {
   background: hsl(345, 75%, 50%);
 }
+
+#score-display, #lives-display {
+  font-size: 30px;
+}
+
+
 
 /* Grid */
 * {
@@ -114,17 +124,21 @@ button:hover {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  border-radius: 25px;
 }
 
 .grid div.giant {
-  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cd7ede72-452c-44a0-b84d-e8478fd7db43/d28t0cy-3cd3d013-cb88-49ea-be5b-0585ddb21b2d.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NkN2VkZTcyLTQ1MmMtNDRhMC1iODRkLWU4NDc4ZmQ3ZGI0M1wvZDI4dDBjeS0zY2QzZDAxMy1jYjg4LTQ5ZWEtYmU1Yi0wNTg1ZGRiMjFiMmQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5MYBoC1nqJ9D7UOBpvr0auuscCq6HGK-0wehyLytU2w');
+  /* background-image: url('https://media.giphy.com/media/b5xDLakZRxJ6M/giphy.gif'); */
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cd7ede72-452c-44a0-b84d-e8478fd7db43/d28t0cy-3cd3d013-cb88-49ea-be5b-0585ddb21b2d.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NkN2VkZTcyLTQ1MmMtNDRhMC1iODRkLWU4NDc4ZmQ3ZGI0M1wvZDI4dDBjeS0zY2QzZDAxMy1jYjg4LTQ5ZWEtYmU1Yi0wNTg1ZGRiMjFiMmQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5MYBoC1nqJ9D7UOBpvr0auuscCq6HGK-0wehyLytU2w'); */
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer; 
+  border-radius: 25px;
 }
 
 .grid div.oil {
-  background-image: url('https://media3.giphy.com/media/AUBkmecnhIHi16giZy/200.gif?cid=95b27944ba1f195b03e3b550c2e1232c53ca2c732b310204&rid=200.gif&ct=g');
+  /* background-image: url('https://media3.giphy.com/media/AUBkmecnhIHi16giZy/200.gif?cid=95b27944ba1f195b03e3b550c2e1232c53ca2c732b310204&rid=200.gif&ct=g'); */
+  background-image: url('');
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
