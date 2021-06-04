@@ -17,7 +17,6 @@ function init() {
   const startingTreePosition = currentGretaPosition
   let currentTreePosition
   const treeClass = 'trees'
-  let currentOilPosition 
   const oilClass = 'oil'
   
   // !updating sessions
@@ -36,7 +35,7 @@ function init() {
   function createGrid(startingGretaPosition) {
     for (let i = 0; i < cellCount; i++) { // keep going as long as i is less than the cell count
       const cell = document.createElement('div')// created a div - similar to query selector 
-      cell.innerText = i
+      cell.id = i // this will help to remove the id
       grid.appendChild(cell)// passed in cell element newly created - all divs are now children
       cells.push(cell)
     }
@@ -52,6 +51,7 @@ function init() {
     cells[position].classList.add('trees')
   }
   function addOil(position){
+    // console.log(cells[position], position)
     cells[position].classList.add('oil')
   } 
   function addGiants(positions) {
@@ -71,6 +71,7 @@ function init() {
   }
 
   function removeOil(position){
+    console.log(cells[position],position)
     cells[position].classList.remove('oil')
   } 
 
@@ -111,6 +112,7 @@ function init() {
   }
 
   function restartGame (){
+    console.log('game restarted')
     removeGiants(currentGiantPosition)
     addGiants(startingGiantPosition)
     removeGreta(currentGretaPosition)
@@ -142,7 +144,8 @@ function init() {
       const giantsOnBottomEdge = currentGiantPosition.some(giant => giantsHitEdge.includes(giant))
       // console.log('giants have hit-->',giantsOnBottomEdge)
       if (giantsOnBottomEdge) {
-        return clearInterval(giantTimer)// don't run anything else in this function 
+        restartGame()
+        return 
       }
       if (giantDirection === 'right') {
         if (giantsOnRightEdge) {
@@ -159,6 +162,7 @@ function init() {
           currentGiantPosition = currentGiantPosition.map(giant => giant - 1)
         }
       } else if (cells[currentGiantPosition].classList.contains('greta')) {
+        console.log('checking life')
         if (lives <= 1){
           console.log('game over')
           stopGame()
@@ -167,12 +171,12 @@ function init() {
           lives -= 1
           livesDisplay.innerText = lives
           console.log('lost a life--->')
-          restartGame ()
+          restartGame()
           return clearInterval(giantTimer)
         }
       }
       addGiants(currentGiantPosition)
-    },1000)
+    },1500)
   }
 //! ------------------ Lasers shooting -------------------
   function moveTree() {
@@ -195,7 +199,7 @@ function init() {
       removeTrees(currentTreePosition)
       currentTreePosition -= width // find the new div
       addTree(currentTreePosition)// add the tree again
-    }, 700)
+    }, 500)
   }
 
 //! ------------------ Giants shooting -------------------
@@ -206,16 +210,21 @@ function init() {
     const randomNumber = Math.floor(Math.random() * currentGiantPosition.length)// generate a random number based on how many giants there are
     const giantToDropOil = currentGiantPosition[randomNumber] // use the random number to find giant position at that index in the array
     const oilStartPosition = giantToDropOil + width // set start of the oil to be 1 cell below the giant
-    currentOilPosition = oilStartPosition // make sure current position is same as start position
-    if (cells[oilStartPosition].classList.contains('giant')) { // if the cell it finds has a class of giant (which means its not on the bottom row), run the function again to find a new position
+    let currentOilPosition = oilStartPosition // make sure current position is same as start position
+    if (cells[oilStartPosition].classList.contains('giant' ) && oilStartPosition < 50 ) { // if the cell it finds has a class of giant (which means its not on the bottom row), run the function again to find a new position
       return oilDripping()
     }
     addOil(oilStartPosition) // add oil at the starting position
     oilTimer = setInterval(() => {
-      if (currentOilPosition > 99) { // if it hits the bottom stop the timer and generate more oil
+      if (currentOilPosition + width > 99 ) { // if it hits the bottom stop the timer and generate more oil
         clearInterval(oilTimer)
         oilDripping()
-      }  
+        removeOil(currentOilPosition)
+      } else {
+        removeOil(currentOilPosition) // remove the oil
+        currentOilPosition += width // redefine the new position
+        addOil(currentOilPosition)
+      }
       if (cells[currentOilPosition].classList.contains('greta')) {
         if (lives <= 1){
           console.log('Game Over')
@@ -227,10 +236,9 @@ function init() {
           removeOil(currentOilPosition)
           restartGame()
         }
-      }
-      removeOil(currentOilPosition) // remove the oil
-      currentOilPosition += width // redefine the new position
-      addOil(currentOilPosition) // add oil at the new position
+      
+    }
+       // add oil at the new position
     }, 1000)
   }
 
