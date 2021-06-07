@@ -120,7 +120,6 @@ function init() {
     addGreta(startingGretaPosition)
     clearInterval(giantTimer)
     clearInterval(oilTimer)
-    startGame()
   }
 
   function stopGame(){

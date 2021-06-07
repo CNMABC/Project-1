@@ -137,11 +137,12 @@ button:hover {
 }
 
 .grid div.oil {
-  /* background-image: url('https://media3.giphy.com/media/AUBkmecnhIHi16giZy/200.gif?cid=95b27944ba1f195b03e3b550c2e1232c53ca2c732b310204&rid=200.gif&ct=g'); */
-  background-image: url('');
+  background-image: url('https://media.giphy.com/media/xqnq1v2eqioOQ/giphy.gif');
+  /* background-image: url(''); */
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  border-radius: 25px;
 }
 
 .grid div.trees {
