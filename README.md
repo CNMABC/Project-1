@@ -1,4 +1,4 @@
-# JavaScript Video Game
+# Save the Planet! - JavaScript Video Game
 
 <h2>Overview </h2>
 
