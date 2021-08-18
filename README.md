@@ -47,9 +47,6 @@ In the image below, the background is set as a page from the book which the game
 
 ![](images/game-greta-1.png.png)
 
-This image shows the recycling that Greta has shot towards the oil giants . 
-This image demonstrates the oil being shot down from the giants. 
-
 <h2>Wins</h2> 
 Creating the 3 functions of starting, restarting and end of game had many components within them . It was key to ensure all elements moved in sync but through making sure my code was clean and my variable names were clear I was able to overcome this issue with ease. 
 
