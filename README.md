@@ -48,7 +48,7 @@ In the image below, the background is set as a page from the book which the game
 ![](images/game-greta-1.png.png)
 
 <h2>Wins</h2> 
-Creating the 3 functions of starting, restarting and end of game had many components within them . It was key to ensure all elements moved in sync but through making sure my code was clean and my variable names were clear I was able to overcome this issue with ease. 
+Creating the 3 functions of starting, restarting and end of game had many components within them. It was key to ensure all elements moved in sync but through making sure my code was clean and my variable names were clear I was able to overcome this issue with ease. 
 
 ``` javascript
  
@@ -135,9 +135,9 @@ Through the use of gifs for both the oil spill and the recycling shooting this a
 
 
 <h2>Challenges</h2>: 
-Ensuring that everything was added to the grid and that all components started to move on loop at the correct speed once the start button function was initiated. Making sure that both Greta and the giants didn’t slip off the grid and making sure when the giants moved down a row they did not continue to move off the grid. 
+Ensuring that everything was added to the grid and that all components started to move on loop at the correct speed once the start button function was initiated. Making sure that both Greta and the giants didn’t slip off the grid and making sure when the giants moved down a row, they did not continue to move off the grid. 
 
-Equally, the collision of recycling with oil drips was tricky as there were a few options including collision theory or using .contains, .remove and .filter. which is what I chose. I had to define what the collision was : when two items occupied the same space . 
+Equally, the collision of recycling with oil drips was tricky as there were a few options including collision theory or using .contains, .remove and .filter. which is what I chose. I had to define what the collision was when two items occupied the same space. 
 
 ``` javascript
 
