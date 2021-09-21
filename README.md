@@ -44,7 +44,6 @@ Below you can see that I created labels which I could then tag onto tasks to lab
 ![](images/asana-pic-2.png)
 
 In the image below, the background is set as a page from the book which the game is based upon. Greta and giants are set on a grid whilst the score is displayed on the left and the levels on the right. Once the start button is pressed the game begins!
-
 ![](images/game-greta-1.png.png)
 
 <h2>Wins</h2> 
@@ -134,7 +133,7 @@ function moveGiants() {
 Through the use of gifs for both the oil spill and the recycling shooting this added a simple layer of animation very easily. 
 
 
-<h2>Challenges</h2>: 
+<h2>Challenges</h2>
 Ensuring that everything was added to the grid and that all components started to move on loop at the correct speed once the start button function was initiated. Making sure that both Greta and the giants didn’t slip off the grid and making sure when the giants moved down a row, they did not continue to move off the grid. 
 
 Equally, the collision of recycling with oil drips was tricky as there were a few options including collision theory or using .contains, .remove and .filter. which is what I chose. I had to define what the collision was when two items occupied the same space. 
