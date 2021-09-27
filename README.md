@@ -11,15 +11,15 @@ Visit the game on GitHub pages [here](https://cnmabc.github.io/Project-1/) and t
 
 <h2> Brief </h2> 
 <ul> 
-<li>Grid-based game in the browser</li>
-<li>Enable user to move left and right</li>
-<li>Design logic for winning and visually displaying score and lives</li>
-<li>Design logic for giants to be on timer to move across and down a row on timer</li>
-<li>Enable user to shoot with command of certain keys</li>
-<li>Design logic for enemies to shoot on a timer</li>
-<li>Use JavaScript or jQuery for DOM manipulation</li>
-<li>Deploy game online via GitHub pages </li>
-<li> Use semantic markup for HTML and CSS</li>
+<li>Grid-based game in the browser.</li>
+<li>Enable user to move left and right.</li>
+<li>Design logic for winning and visually displaying score and lives.</li>
+<li>Design logic for giants to be on timer to move across and down a row on timer.</li>
+<li>Enable user to shoot with command of certain keys.</li>
+<li>Design logic for enemies to shoot on a timer.</li>
+<li>Use JavaScript or jQuery for DOM manipulation.</li>
+<li>Deploy game online via GitHub pages.</li>
+<li> Use semantic markup for HTML and CSS.</li>
 </ul>
 
 
