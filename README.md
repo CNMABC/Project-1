@@ -170,11 +170,11 @@ After losing a life, random shots from Greta from the previous round sometimes d
 
 <h2>Future Improvements</h2> 
 <ul>
-<li> The introduction of new levels and between each, the user receives more information about Greta’s quest and lessons on how they can help the environment 
-<li> Ability to hit bonus oil giants which increase your score 
+<li> The introduction of new levels and between each, the user receives more information about Greta’s quest and lessons on how they can help the environment. </li>
+<li> Ability to hit bonus oil giants which increase your score. </li>
 <li> At each level introduce a new character of enemy from the oil giants to plastic giants etc. 
-<li>Add audio both for a background track and attached to each button and collision </li>
-<li>Create a game over </li>
+<li>Add audio both for a background track and attached to each button and collision. </li>
+<li>Create a game over. </li>
 </ul>
 
 <h2>Key Learnings</h2> 
